@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  redis:
+    image: 'redis:5-alpine'
+    container_name: 'redis'
+  pangalink:
+    image: 'laurielias/pangalink'
+    container_name: 'pangalink'
+    build: .
+    ports:
+      - '3480:3480'
+    environment:
+      - NODE_ENV=production

@@ -21,7 +21,7 @@ module.exports = {
 
     // redis andmebaasi andmed
     redis: {
-        host: 'localhost',
+        host: 'redis',
         port: 6379,
         db: 3 // numbriline väärtus
     },
