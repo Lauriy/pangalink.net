@@ -14,4 +14,4 @@ services:
       - NODE_ENV=production
     volumes:
       - ./data:/home/pangalink/data
-      - ./config:/home/pangalink/config
+      # - ./config:/home/pangalink/config
