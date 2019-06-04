@@ -1,23 +1,9 @@
-<li<% if(page=="/"){%> class="active"<%}%>><a href="/">Esileht</a></li>
+<li<% if(page=="/"){%> class="active"<%}%>><a href="/<%= lang %>/">Esileht</a></li>
 
-<% if(user && user.id){ %>
-<li<% if(page=="/projects" || page=="/project" || page=="/payment"){%> class="active"<%}%>><a href="/projects">Makselahendused</a></li>
-<% } %>
+<li<% if(page=="/projects" || page=="/project" || page=="/payment"){%> class="active"<%}%>><a href="/<%= lang %>/projects">Makselahendused</a></li>
 
-<li<% if(page=="/info"){%> class="active"<%}%>><a href="/info">Info</a></li>
+<li<% if(page=="/info"){%> class="active"<%}%>><a href="/<%= lang %>/info">Info</a></li>
 
-<li<% if(page=="/api" || page=="/api" || page=="/api"){%> class="active"<%}%>><a href="/api">API</a></li>
+<li<% if(page=="/api" || page=="/api" || page=="/api"){%> class="active"<%}%>><a href="/<%= lang %>/api">API</a></li>
 
-<li<% if(page=="/docs"){%> class="active"<%}%>><a href="/docs/ui-tests">UI automaattestid</a></li>
-
-<li><a href="http://tahvel.info/banklink/" target="_blank"><span class="glyphicon glyphicon-share-alt"></span> Maksevoo demo</a></li>
-
-<% if(user && user.id){ %>
-    <li<% if(page=="/profile"){%> class="active"<%}%>><a href="/profile">Minu profiil</a></li>
-    <li<% if(page=="/logout"){%> class="active"<%}%>><a href="/logout">Logi välja</a></li>
-<% } %>
-
-<% if(!user || !user.id){%>
-    <li<% if(page=="/join"){%> class="active"<%}%>><a href="/join">Loo endale konto</a></li>
-    <li<% if(page=="/login"){%> class="active"<%}%>><a href="/login">Logi sisse</a></li>
-<% } %>
+<li<% if(page=="/docs"){%> class="active"<%}%>><a href="/<%= lang %>/docs/ui-tests">UI automaattestid</a></li>

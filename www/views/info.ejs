@@ -4,13 +4,20 @@
 
 <h3 id="kontakt">Kontakt</h3>
 
-<p><%= title %> teenust haldab:</p>
+<!--
+<div class="alert alert-warning">
+    <h4>Tähelepanu!</h4>
+    <p><%= title %> pakub avalikku testimisplatvormi ning ei tegele pangalinkide integreerimise, kasutajatoe ega muude eraviisiliste teenustega. Kui soovite oma veebipoele või kodulehele lisada pangalinkide tuge, leidke selleks pädev arendaja näiteks <a href="http://www.neti.ee/cgi-bin/teema/ARI/Arvutifirmad/Tarkvara/Veebilahendused/" title="NETI: /ÄRI/Arvutifirmad/Tarkvara/Veebilahendused" class="alert-link">siit</a>. Kui soovite genereerida panga jaoks võtmeid, aga ise ei oska, siis saab seda teha <a href="/<%= lang %>/keys" class="alert-link">siin</a>.</p>
+</div>
+-->
+
+<p>Pangalinkide testimise tarkvara on tootnud:</p>
 
 <address>
   <strong>Kreata OÜ</strong><br>
-  <abbr title="Telefon">Tel:</abbr> +372 5661 1840<br>
   <abbr title="Äriregistri kood">Reg kood:</abbr> 11710839<br>
-  <abbr title="Arveldusarve (Swedbank)">A/a:</abbr> 221047058182<br>
+  <abbr title="Käibemaksukohustuslasena registreerimise number">KMKR:</abbr> EE101708612<br>
+  <abbr title="Arveldusarve (Swedbank)">A/a:</abbr> EE952200221047058182<br>
 </address>
 
 <address>
@@ -21,43 +28,31 @@
 
 <hr>
 
-<h3 id="vigadest_teatamine">Staatus</h3>
-
-<%= title %> süsteemi olekut saab kontrollida aadressil <a href="http://status.pangalink.net/">status.pangalink.net</a>.
-
-<h3 id="vigadest_teatamine">Vigadest teatamine</h3>
-
-<p>Juhul kui leiad <%= title %> teenusest mõne vea, olgu selleks siis ebakorrektne pangalingi implementatsioon või kirjaviga mõnes tekstis, siis saad sellest veast teavitada <a href="https://github.com/andris9/pangalink.net/issues?state=open">GitHubis.</a></p>
-
-<p><%= title %> on vaba lähtekoodiga tarkvara, <%= title %> lähtekood on alla laetav <a href="https://github.com/andris9/pangalink.net">GitHubist</a>, seega võid ka ise vea parandamises kaasa lüüa.</p>
-
-<hr>
-
 <h3 id="pangalinkide_spetsifikatsioon">Pangalinkide spetsifikatsioon ja näited</h3>
 
 <h4 id="demorakendus">Demorakendus</h4>
 
 <p>Lae endale demorakenduse täielik lähtekood (põhineb Zone <a href="http://blog.zone.ee/2006/12/12/pangalink/">pangalingi demol</a>) koos vajalike sertifikaatidega allolevalt lingilt.</p>
-<p>Demorakendust pole vaja eraldi konfigureerida – töötab <em>out of the box</em>. Lae see enda serverisse ning ava aadress <a href="http://tahvel.info/banklink-0.1.1/pay.php">pay.php</a>.</p>
-<p><a href="/assets/banklink-0.1.1.zip" class="btn btn-default btn-lg" target="_blank"><span class="glyphicon glyphicon-download"></span> Demorakenduse lähtekood</a></p>
+<p>Demorakendust pole vaja eraldi konfigureerida – töötab <em>out of the box</em>. Lae see enda serverisse ning ava aadress <em>pay.php</em>.</p>
+<p><a href="/assets/banklink-0.1.1.zip" class="btn btn-warning"><span class="glyphicon glyphicon-download"></span> Demorakenduse lähtekood</a></p>
 
 <hr>
 
 <h4 id="csr_genereerimine">CSR genereerimine</h4>
 
-<p>Juhul kui soovid abi salajase võtme ja sertifikaadipäringu failide genereerimisel, saad seda teha <a href="/keys">siinsamas</a>.
+<p>Juhul kui soovid abi salajase võtme ja sertifikaadipäringu failide genereerimisel, saad seda teha <a href="/<%= lang %>/keys">siinsamas</a>.
 
 <hr>
 
 <h4 id="tehniline_spetsifikatsioon">Tehniline spetsifikatsioon</h4>
 <ul>
     <li><a href="http://www.danskebank.ee/et/14732.html" target="_blank">Danske Bank pangalingi dokumentatsioon</a></li>
-    <li><a href="http://www.krediidipank.ee/business/settlements/bank-link/tehniline_kirjeldus.pdf" target="_blank">Krediidipanga pangalingi dokumentatsioon</a> (PDF)</li>
-    <li><a href="http://www.lhv.ee/images/docs/Bank_Link_Technical_Specification-ET.pdf" target="_blank">LHV Panga pangalingi dokumentatsioon</a> (PDF)</li>
-    <li><a href="http://www.nordea.ee/sitemod/upload/root/www.nordea.ee%20-%20default/Teenused%20firmale/E-Payment_v1_1.pdf" target="_blank">Nordea pangalingi dokumentatsioon</a> (PDF)</li>
+    <li><a href="http://www.krediidipank.ee/business/settlements/bank-link/index.html" target="_blank">Krediidipanga pangalingi dokumentatsioon</a></li>
+    <li><a href="https://www.lhv.ee/pangateenused/pangalink/" target="_blank">LHV Panga pangalingi dokumentatsioon</a></li>
+    <li><a href="http://www.nordea.ee/Teenused+%C3%A4rikliendile/Igap%C3%A4evapangandus/Maksete+kogumine/E-makse/1562142.html" target="_blank">Nordea pangalingi dokumentatsioon</a></li>
     <li><a href="http://www.estcard.ee/publicweb/html/est/e-commerce.html" target="_blank">Pankade Kaardikeskuse kaardimaksete dokumentatsioon</a></li>
     <li><a href="http://www.seb.ee/ari/maksete-kogumine/maksete-kogumine-internetis/tehniline-spetsifikatsioon" target="_blank">SEB pangalingi dokumentatsioon</a></li>
-    <li><a href="https://www.swedbank.ee/static/pdf/business/d2d/paymentcollection/info_banklink_techspec_est.pdf" target="_blank">Swedbank pangalingi dokumentatsioon</a> (PDF)</li>
+    <li><a href="https://www.swedbank.ee/business/cash/ecommerce/banklink/description?language=EST" target="_blank">Swedbank pangalingi dokumentatsioon</a></li>
 </ul>
 
 <p><%= title %> on kohati rangem kui spetsifikatsioonid ette näevad – juhul kui mingi väärtus on mitmeti mõistetav või võiks alati olla kindla väärtusega, siis <%= title %> nõuabki sel puhul üht ja kindlat kasutusviisi.</p>
@@ -82,6 +77,10 @@
 
 <h4 id="pankade_erinevused">Pankade erinevused</h4>
 
+<div class="alert alert-warning">
+     <p>Alates 2014 a. oktoobrist kehtib uus pangalingi protokoll. Detailid leiab <a href="http://pangaliit.ee/et/arveldused/pangalingi-spetsifikatsioon" title="Pangalingi spetsifikatsioon" class="alert-link">pangaliidu kodulehelt</a>. Tabelis toodud erisused kehtivad vana protokolli korral.</p>
+</div>
+
 <table class="table table-hover">
     <thead>
     <tr>
@@ -102,13 +101,16 @@
         <td>Danske Bank</td>
         <td>IPizza</td>
         <td><code>SAMPOPANK</code></td>
-        <td>-</td>
-        <td><b>ISO-8859-1</b></td>
-        <td><a href="https://<%= hostname %>/banklink/sampo">[link]</a></td>
+        <td><code>VK_ENCODING</code></td>
+        <td>ISO-8859-1<br />
+            <b>UTF-8</b><br />
+            Win-1257
+            </td>
+        <td><a href="<%= proto %>://<%= hostname %>/banklink/sampo">[link]</a></td>
 
         <td><a href="https://www2.danskebank.ee/ibank/pizza/pizza">[link]</a></td>
         <td><code>008</code></td>
-        <td>-</td>
+        <td>sümbolid</td>
     </tr>
 
     <tr>
@@ -120,7 +122,7 @@
             UTF-8<br />
             Win-1257
             </td>
-        <td><a href="https://<%= hostname %>/banklink/krediidipank">[link]</a></td>
+        <td><a href="<%= proto %>://<%= hostname %>/banklink/krediidipank">[link]</a></td>
 
         <td><a href="https://i-pank.krediidipank.ee/teller/maksa">[link]</a></td>
         <td><code>008</code></td>
@@ -135,7 +137,7 @@
         <td><b>ISO-8859-1</b><br />
             UTF-8<br />
             WINDOWS-1257</td>
-        <td><a href="https://<%= hostname %>/banklink/lhv">[link]</a></td>
+        <td><a href="<%= proto %>://<%= hostname %>/banklink/lhv">[link]</a></td>
 
         <td><a href="https://www.lhv.ee/banklink">[link]</a></td>
         <td><code>008</code></td>
@@ -148,7 +150,7 @@
         <td>-</td>
         <td>-</td>
         <td><b>ISO-8859-1</b></td>
-        <td><a href="https://<%= hostname %>/banklink/nordea">[link]</a></td>
+        <td><a href="<%= proto %>://<%= hostname %>/banklink/nordea">[link]</a></td>
         <td><a href="https://netbank.nordea.com/pnbepay/epayn.jsp">[link]</a></td>
         <td><code>0002</code> <code>0003</code> <code>0004</code></td>
         <td>-</td>
@@ -160,7 +162,7 @@
         <td>-</td>
         <td><code>charEncoding</code></td>
         <td><b>ISO-8859-1</b><br />UTF-8 ***</td>
-        <td><a href="https://<%= hostname %>/banklink/ec">[link]</a></td>
+        <td><a href="<%= proto %>://<%= hostname %>/banklink/ec">[link]</a></td>
         <td><a href="https://pos.estcard.ee/webpos/servlet/iPAYServlet">[link]</a></td>
         <td><code>002</code>&nbsp;**** <code>004</code></td>
         <td>sümbolid?</td>
@@ -173,7 +175,7 @@
         <td><code>VK_CHARSET</code></td>
         <td><b>ISO-8859-1</b><br />
             UTF-8</td>
-        <td><a href="https://<%= hostname %>/banklink/seb">[link]</a></td>
+        <td><a href="<%= proto %>://<%= hostname %>/banklink/seb">[link]</a></td>
 
         <td><a href="https://www.seb.ee/cgi-bin/unet3.sh/un3min.r">[link]</a></td>
         <td><code>008</code></td>
@@ -188,7 +190,7 @@
         <td><b>ISO-8859-1</b><br />
             UTF-8<br />
             ISO-8859-4 *****</td>
-        <td><a href="https://<%= hostname %>/banklink/swedbank">[link]</a></td>
+        <td><a href="<%= proto %>://<%= hostname %>/banklink/swedbank">[link]</a></td>
 
         <td><a href="https://www.swedbank.ee/banklink">[link]</a></td>
         <td><code>008</code></td>
@@ -202,7 +204,7 @@
 
 * Väärtused näitavad, kas unikood kodeeringu puhul tuleb stringi pikkuse arvutamisel arvestada sübolite või baitide arvuga. Mitte-unikood kodeeringu puhul on sümbolite ja baitide arv alati võrdne.<br />
 
-** Juhul kui kodeering pole määratud parameetriga <code>VK_CHARSET</code>, kasutatakse ISO-8859-13 kodeeringut, kuid allkirjastamisel täpitähti ei arvestata. Pangalink.net nõuab seetõttu Krediidipanga puhul alati <code>VK_CHARSET</code> parameetri kasutamist.<br />
+** Juhul kui kodeering pole määratud parameetriga <code>VK_CHARSET</code>, kasutatakse ISO-8859-13 kodeeringut, kuid allkirjastamisel täpitähti ei arvestata. <%= title %> nõuab seetõttu Krediidipanga puhul alati <code>VK_CHARSET</code> parameetri kasutamist.<br />
 
 *** Ainult versioonis <code>004</code>.<br />
 

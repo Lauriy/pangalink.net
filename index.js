@@ -1,42 +1,43 @@
-var config = require("./config/" + (process.env.NODE_ENV || "development") + ".json"),
-    cluster = require('cluster'),
-    numCPUs = config.workerCount || require('os').cpus().length;
+'use strict';
+
+var config = require('config');
+var log = require('npmlog');
 
 // Force support for self-signed certificates
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-if(cluster.isMaster){
+log.info('[' + process.pid + '] SERVER', 'Starting server with Node.js v%s', process.versions.node);
 
-    console.log("Starting server");
+// Handle error conditions
+process.on('SIGTERM', function() {
+    log.warn('[' + process.pid + '] PROCESS', 'Exited on SIGTERM');
+    process.exit(0);
+});
 
-    // Fork workers.
-    for (var i = 0; i < numCPUs; i++) {
-        cluster.fork();
-    }
-
-    cluster.on('exit', function(worker, code, signal) {
-        console.log('Worker ' + worker.process.pid + ' died, restarting');
-        cluster.fork();
-    });
-
-    // Handle error conditions
-    process.on("SIGTERM", function(){
-        console.log("Exited on SIGTERM");
-        process.exit(0);
-    });
-
-    process.on("SIGINT", function(){
-        console.log("Exited on SIGINT");
-        process.exit(0);
-    });
-
-}else{
-    console.log("Starting worker "+process.pid);
-    require("./server");
-}
+process.on('SIGINT', function() {
+    log.warn('[' + process.pid + '] PROCESS', 'Exited on SIGINT');
+    process.exit(0);
+});
 
 process.on('uncaughtException', function(err) {
-    console.log("uncaughtException");
-    console.log(err.stack);
+    log.error('[' + process.pid + '] UNCAUGHT', err.stack);
     process.exit(1);
 });
+
+if (config.group) {
+    try {
+        process.setgid(config.group);
+    } catch (E) {
+        log.error('Init', 'Could not change group to %s, running as gid:%s', config.group, process.getgid());
+    }
+}
+
+if (config.user) {
+    try {
+        process.setuid(config.user);
+    } catch (E) {
+        log.error('Init', 'Could not change user to %s, running as uid:%s', config.user, process.getuid());
+    }
+}
+
+require('./server').start({}, function() {});

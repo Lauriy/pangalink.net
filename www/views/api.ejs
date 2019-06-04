@@ -1,48 +1,41 @@
 <div class="page-header">
-    <div class="pull-right">
-        <span id="mashape-button" data-api="pangalink-net" data-name="andris9" data-icon="1"></span>
-        <script src="https://www.mashape.com/embed/button.js"></script>
-    </div>
     <h1><%= title %> API</h1>
 </div>
 
 <div class="well well-small">
-    <% if(user){%>
-        Sinu salajane API võti on <strong style="font-family: monospace"><%= user.token %></strong><br />
-    <% } %>
-    <% if(!user){%>
-        <a href="/login">Logi sisse</a>, et näha siin oma salajast API võtit.<br />
-    <% } %>
-    API aadress on <strong>https://<%= apiHost || hostname %>/</strong>
+    API aadress on <strong><%= proto %>://<%= apiHost %>/</strong>
 </div>
 
-<p>Pangalink.net API koosneb kahest osast – esiteks lisaparameetritest, mida on võimalik kaasa anda maksevormiga, ning teiseks HTTP JSON API, mis võimaldab automatiseerida makselahenduste loomisega seonduvat.</p>
+<p><%= title %> API koosneb kahest osast – esiteks lisaparameetritest, mida on võimalik kaasa anda maksevormiga, ning teiseks HTTP JSON API, mis võimaldab automatiseerida makselahenduste loomisega seonduvat.</p>
 
-<div class="bs-callout bs-callout-warning">
-  <h4>API kasutamine</h4>
-  <p>Pangalink.net HTTP JSON API kasutamiseks on vaja Mashape’i kontot, mille saab endale teha <a href="https://www.mashape.com/signup">siin</a>.</p>
-  <p>Mashape’i kasutamise dokumentatsiooni ja testkonsooli Pangalink.net API päringute tegemiseks <a href="https://www.mashape.com/andris9/pangalink-net">leiab siit</a>.</p>
-</div>
-
-<h3>Lisaparameetrid</h3>
+<h3 id="lisaparameetrid">Lisaparameetrid</h3>
 
 <p>Järgmised POST parameetrid saab kaasa panna tavalise maksevormiga. Näiteks kui tahad vaikimisi määrata maksja nime, siis võid tavalistele <code>VK_*</code> parameetritele lisaks panna maksevormi juurde ka parameetri <code>PANGALINK_NAME</code>, mis määrabki maksevormis maksja nime.</p>
 
 <ul>
     <li><code>PANGALINK_NAME</code> – määrab maksja nime maksevormis (vaikimisi "Tõõger Leõpäöld")</li>
     <li><code>PANGALINK_ACCOUNT</code> – määrab maksja konto maksevormis (vaikimisi seotud panga tüübiga)</li>
+
+    <li><code>PANGALINK_USER</code> – määrab autentimisvormis kasutaja kokkuleppelise identifikaatori</li>
+    <li><code>PANGALINK_USER_NAME</code> – määrab autentimisvormis kasutaja nime</li>
+    <li><code>PANGALINK_USER_ID</code> – määrab autentimisvormis kasutaja isikukoodi</li>
+    <li><code>PANGALINK_COUNTRY</code> – määrab autentimisvormis isikukoodi riigi</li>
+    <li><code>PANGALINK_OTHER</code> – määrab autentimisvormis kasutaja lisainfo</li>
+    <li><code>PANGALINK_TOKEN</code> – määrab autentimisvormis valitud autentimisvahendi</li>
+
     <li><code>PANGALINK_AUTOPAY</code> – automaatselt aktsepteerib/keeldub maksest ja suunab tagasi kaupmehe lehele. Võimalikud väärtused on:
         <ul>
             <li><code>accept</code> – makse teostatakse</li>
             <li><code>cancel</code> – makse katkestatakse</li>
             <li><code>reject</code> – makse lükatakse tagasi tehnilistel põhjustel</li>
+            <li><code>auth</code> – kasutaja autenditakse</li>
         </ul>
     </li>
 </ul>
 
-<h3>HTTP API</h3>
+<h3 id="http_api">HTTP API</h3>
 
-<p>Kõikide API päringute lõppu tuleks panna GET parameeter <code>access_token</code>, mille väärtuseks on kasutaja salajane API võti. API päringu sisu (POST ja PUT päringute puhul) peab olema JSON formaadis. Samas formaadis on ka päringu vastus.</p>
+<p>API päringu sisu (POST ja PUT päringute puhul) peab olema JSON formaadis. Samas formaadis on ka päringu vastus.</p>
 
 <p>Juhul kui päring õnnestub, on vastus järgmisel kujul:</p>
 
@@ -57,6 +50,73 @@
     "success": false,
     "error": "&lt;ilmnenud vea kirjeldus&gt;"
 }</pre>
+
+<h3 id="pankade_nimekiri">Pankade nimekiri</h3>
+
+<p>API päringud kasutavad panga määramiseks identifikaatorit <code>type</code>. Näiteks kui tahad luua uut makselahendust tüübiga "Danske Emulaator", siis sea <code>type</code> väärtuseks <code>"sampo"</code>.</p>
+
+<h4>GET /banks</h4>
+
+<h5>Vastusparameetrid</h5>
+
+Tagastusväärtuseks on massiiv emulaatorite andmetega.
+
+<ul>
+    <li><code>type</code> – emulaatori identifikaator</li>
+    <li><code>name</code> – emulaatori nimi</li>
+</ul>
+
+<h4><strong>Demo</strong></h4>
+
+<h5>Päring</h5>
+
+<pre>curl -XGET "<%= proto %>://<%= apiHost %>/banks"</pre>
+
+<h5>Vastus</h5>
+
+<pre>{
+    "success": true,
+    "data": [
+        {
+            "type": "aktiasppop",
+            "name": "Aktia/Sp/Pop Emulaator (beta)"
+        },
+        {
+            "type": "alandsbanken",
+            "name": "Ålandsbanken Emulaator (beta)"
+        },
+        {
+            "type": "ec",
+            "name": "Pankade Kaardikeskuse Emulaator"
+        },
+        ...
+    ]
+}</pre>
+
+<h4>Hetkel kasutuses olevad emulaatorid</h4>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>
+            Panga nimi
+        </th>
+        <th>
+            Identifikaator
+        </th>
+    </tr>
+
+    <% Object.keys(banks).sort().forEach(function(key){%>
+        <tr>
+            <td>
+                <%= banks[key].name %>
+            </td>
+            <td>
+                <code><%= key %></code>
+            </td>
+        </tr>
+    <% }) %>
+</table>
 
 <h3>Makselahenduste nimekiri</h3>
 
@@ -83,14 +143,14 @@
             <li><code>name</code> – makselahenduse nimi</li>
         </ul>
     </li>
-    
+
 </ul>
 
 <h4><strong>Demo</strong></h4>
 
 <h5>Päring</h5>
 
-<pre>curl -H "X-Mashape-Authorization: YOUR-MASHAPE-KEY" -XGET "https://<%= apiHost || hostname %>/project?access_token=<%= user && user.token || 12345%>"</pre>
+<pre>curl -XGET "<%= proto %>://<%= apiHost %>/project"</pre>
 
 <h5>Vastus</h5>
 
@@ -137,7 +197,7 @@
     <li><code>private_key</code> – salajane võti panka mineva makse andmete allkirjastamiseks (ainult avaliku võtme süsteemi kasutavate pankade puhul)</li>
     <li><code>bank_certificate</code> – panga sertifikaat pangast saabunud maksekinnituse kontrolliks (ainult avaliku võtme süsteemi kasutavate pankade puhul)</li>
     <li><code>mac_key</code> – salajane MAC võti päringute allkirjastamiseks ja valideerimiseks (ainult Nordea puhul)</li>
-    <li><code>algo</code> – allkirjastamise algoritm (ainult Nordea puhul)</li>
+    <li><code>algo</code> – allkirjastamise algoritm (osade pankade puhul). Võimalikud väärtused "md5", "sha1" ja "sha256".</li>
     <li><code>auto_response</code> – juhul kui on tõene, siis pank teeb automaatpäringu makse infoga (ainult Nordea puhul)</li>
 </ul>
 
@@ -145,7 +205,7 @@
 
 <h5>Päring</h5>
 
-<pre>curl -H "X-Mashape-Authorization: YOUR-MASHAPE-KEY" -XGET "https://<%= apiHost || hostname %>/project/<%= list[0] && list[0]._id || "516e93fd9f89270f97000001" %>?access_token=<%= user && user.token || 12345%>"</pre>
+<pre>curl -XGET "<%= proto %>://<%= apiHost %>/project/<%= list[0] && list[0]._id || "516e93fd9f89270f97000001" %>"</pre>
 
 <h5>Vastus</h5>
 
@@ -154,7 +214,7 @@
     "data": {
         "id": "516e93fd9f89270f97000001",
         "client_id": "uid402268",
-        "payment_url": "https://pangalink.net/banklink/ipizza",
+        "payment_url": "<%= proto %>://<%= hostname %>/banklink/ipizza",
         "type": "ipizza",
         "name": "Testkonto",
         "private_key": "-----BEGIN RSA PRIVATE KEY----- ...",
@@ -178,7 +238,7 @@
     <li><code>account_nr</code> – konto number. Vajalik ipizza tüüpi pankade puhul teenuse 1002 kasutamiseks (pole kohustuslik, vaikimisi genereeritakse suvaline number)</li>
     <li><code>key_size</code> – avaliku võtme süsteemi kasutavate pankade puhul privaatvõtme suurus (pole kohustuslik, vaikimisi kasutatakse 1024)</li>
     <li><code>return_url</code> – tagasisuunamise aadress pärast makse sooritamist. Kohustuslik vaid Pankade Kaardikeskuse valiku korral, muudel juhtudel ei kasutata.</li>
-    <li><code>algo</code> – allkirjastamise algoritm (pole kohustuslik). Vajalik vaid Nordea valiku korral, muudel juhtudel ei kasutata. Kui on määramata, kasutatakse väärtust "MD5".</li>
+    <li><code>algo</code> – allkirjastamise algoritm (pole kohustuslik). Vajalik vaid osade pankade puhul (Nordea, Soome pangad). Kui on määramata, kasutatakse väärtust "md5". Võimalikud väärtused "md5", "sha1" ja "sha256".</li>
     <li><code>auto_response</code> – kas pank peaks tegema automaatpäringu makse teostamisel (<em>true</em> või <em>false</em>). Pole kohustuslik. Vajalik vaid Nordea valiku korral, vaikimisi automaatpäringut ei tehta.</li>
 </ul>
 
@@ -198,7 +258,7 @@
     <li><code>private_key</code> – salajane võti panka mineva makse andmete allkirjastamiseks (ainult avaliku võtme süsteemi kasutavate pankade puhul)</li>
     <li><code>bank_certificate</code> – panga sertifikaat pangast saabunud maksekinnituse kontrolliks (ainult avaliku võtme süsteemi kasutavate pankade puhul)</li>
     <li><code>mac_key</code> – salajane MAC võti päringute allkirjastamiseks ja valideerimiseks (ainult Nordea puhul)</li>
-    <li><code>algo</code> – allkirjastamise algoritm (ainult Nordea puhul)</li>
+    <li><code>algo</code> – allkirjastamise algoritm (osade pankade puhul). Võimalikud väärtused "md5", "sha1" ja "sha256".</li>
     <li><code>auto_response</code> – juhul kui on tõene, siis pank teeb automaatpäringu makse infoga (ainult Nordea puhul)</li>
 </ul>
 
@@ -206,7 +266,7 @@
 
 <h5>Päring</h5>
 
-<pre>curl -H "X-Mashape-Authorization: YOUR-MASHAPE-KEY" -XPOST "https://<%= apiHost || hostname %>/project?access_token=<%= user && user.token || 12345%>" \
+<pre>curl -XPOST "<%= proto %>://<%= apiHost %>/project" \
     --data '{
         "type": "ipizza",
         "name": "Testkonto"
@@ -219,7 +279,7 @@
     "data": {
         "id": "51cc0559fa66e5522c000003",
         "client_id": "uid402268",
-        "payment_url": "https://pangalink.net/banklink/ipizza",
+        "payment_url": "<%= proto %>://<%= hostname %>/banklink/ipizza",
         "type": "ipizza",
         "name": "Testkonto",
         "private_key": "-----BEGIN RSA PRIVATE KEY----- ...",
@@ -237,7 +297,7 @@
 
 <h5>Päring</h5>
 
-<pre>curl -H "X-Mashape-Authorization: YOUR-MASHAPE-KEY" -XDELETE "https://<%= apiHost || hostname %>/project/<%= list[0] && list[0]._id || "516e93fd9f89270f97000001" %>?access_token=<%= user && user.token || 12345%>"</pre>
+<pre>curl -XDELETE "<%= proto %>://<%= apiHost %>/project/<%= list[0] && list[0]._id || "516e93fd9f89270f97000001" %>"</pre>
 
 <h5>Vastus</h5>
 
@@ -249,6 +309,7 @@
 <h3>API muudatuste ajalugu</h3>
 
 <ul>
+    <li><strong>04.12.2014</strong> – Juba tükk aega ei ole Mashape API proksi kasutamine enam vajalik</li>
     <li><strong>16.08.2013</strong> – API päringud peavad käima läbi <a href="https://www.mashape.com/">Mashape</a> API proksi</li>
     <li><strong>01.07.2013</strong> – lisatud lisaparameetrite võimalus (PANGALINK_NAME, PANGALINK_ACCOUNT, PANGALINK_AUTOPAY)</li>
     <li><strong>29.06.2013</strong> – parameeter <code>expiration_time</code> kustutatud makselahenduse andmetest</li>

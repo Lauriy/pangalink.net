@@ -1,7 +1,8 @@
 <% include header %>
 
-<h2>Viga makse töötlemisel</h2>
+<h3>Viga makse töötlemisel</h3>
 
+<div data-current-state="error"></div>
 <span data-payment-state="ERRORED"></span>
 <span data-payment-error="<%= errors.map(function(error){return typeof error != "object" ? error : error.error}).join("; ") %>" ></span>
 
@@ -12,15 +13,24 @@
     </div>
     <p>Järgnevad vead takistasid maksekorralduse edasist täitmist:</p>
     <ul>
+    <% var download = false; %>
     <% errors.forEach(function(error, i){%>
+        <% if(error.download){download = true;} %>
         <li><%= typeof error != "object" ? error : error.error %></li>
     <%})%>
     </ul>
+
+    <% if(id && download) {%>
+        <p>
+            <a href="/<%= lang %>/payment/<%= id %>/scripts/pay.php" class="btn btn-warning"><span class="glyphicon glyphicon-download"></span> pay.php</a>
+            <small>Lae alla näiteskript sisendandmete korrektseks allkirjastamiseks (ainult sisseloginud kasutajale)</small>
+        </p>
+    <%}%>
     <hr>
 <%}%>
 
 <% if(warnings){%>
-    <div class="alert">
+    <div class="alert alert-warning">
       <strong>Tähelepanu!</strong> Maksekorralduse töötlemisel ilmnes tõrkeid.
     </div>
     <p>Järgnevad vead tasub parandada, kuid see ei ole kohustuslik:</p>
@@ -34,10 +44,10 @@
 
 <% if(id){ %>
 
-<p>Maksekorralduse detailivaadet kuvatakse sisseloginud kasutajale <a href="/payment/<%= id %>">pangalink.net</a> lehel. Siinkohal on toodud vaid üldisemad andmed.</p>
+    <p>Vaata ebaõnnestunud maksekorralduse täpsemaid andmeid <a href="/<%= lang %>/payment/<%= id %>">maksekorralduse infolehelt</a>. Siinkohal on toodud üldisemad andmed.</p>
 
 <hr>
-<% } %>
+<% } %>
 
 <h3>Päringu andmed</h3>
 

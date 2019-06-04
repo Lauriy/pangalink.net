@@ -1,3 +1,11 @@
+
+<% if(bank.deprecated){ %>
+<div class="alert alert-danger">
+    <h4>Aegunud protokoll!</h4>
+    <p>Alates 2014 a. oktoobrist lähevad pangaliidu liikmed üle uuendatud pangalingi protokollile. Detailid leiab <a href="http://pangaliit.ee/et/arveldused/pangalingi-spetsifikatsioon" title="Pangalingi spetsifikatsioon" class="alert-link">pangaliidu kodulehelt</a>. <%= title %> võimaldab paralleelselt kasutada mõlemat protokolli, kuid eri makselahendustena (uue protokolli kasutamiseks tuleb luua uus makselahendus).</p>
+</div>
+<%}%>
+
 <table class="table">
 
     <tr>
@@ -25,15 +33,8 @@
         </td>
     </tr>
 
-    <% if(uid && (uid == project.owner || project.authorized.indexOf(uid.toLowerCase().trim()) >=0)){ %>
-        <tr>
-            <td colspan="2"><i class="icon icon-share"></i> <a href="/payment/<%= payment._id %>" target="_blank">Maksekorralduse detailsed andmed</a> (avaneb uues aknas)</td>
-        </tr>
-    <% } %>
-    <% if(!uid || !(uid == project.owner || project.authorized.indexOf(uid.toLowerCase().trim()) >=0)){ %>
-        <tr>
-            <td colspan="2">Maksekorralduse detailivaadet kuvatakse sisseloginud kasutajale, kellel on õigus vastava makselahenduse andmetega toimetada</td>
-        </tr>
-    <% } %>
+    <tr>
+        <td colspan="2"><i class="icon icon-share"></i> <a href="/<%= lang %>/payment/<%= payment._id %>" target="_blank">Maksekorralduse detailsed andmed</a> (avaneb uues aknas)</td>
+    </tr>
 
 </table>

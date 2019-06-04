@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="<%- payment.charset.toLowerCase() %>" />
-        <title>Example payment usage - <%= bank.name %> - pangalink.net</title>
+        <title>Example payment usage - <%= bank.name %> - <%= title %></title>
     </head>
     <body>
 <?php
@@ -32,12 +32,12 @@ $fields = array(
 // STEP 3. Generate data to be verified
 // ====================================
 <%
-    signatureOrder = signatureOrder[payment.responseFields.SOLOPMT_RETURN_VERSION || payment.responseFields.RETURN_VERSION || "0002"] || signatureOrder["0002"];
+    signatureOrder = signatureOrder[payment.responseFields.SOLOPMT_RETURN_VERSION || payment.responseFields.RETURN_VERSION || "0002"] || signatureOrder["0002"];
     signatureOrder = signatureOrder["PAYMENT-OUT"];
 -%>
 
 <% signatureOrder.forEach(function(field, i, arr){ -%>
-<% data += (payment.responseFields[field] || payment.responseFields["SOLOPMT_" + field] || "") + "&" -%>
+<% data += (payment.responseFields[field] || payment.responseFields["SOLOPMT_" + field] || "") + "&" -%>
 <%- !i ? "$data = " : "        "%>$fields["<%- "SOLOPMT_" + field in payment.responseFields ? "SOLOPMT_" + field : field %>"] . "&" .
 <% })
 data += project.secret + "&"

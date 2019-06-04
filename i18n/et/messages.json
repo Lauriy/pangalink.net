@@ -1,0 +1,291 @@
+{
+    "messages": {
+        "messages": {
+            "messages": {
+                "messages": {
+                    "messages": {
+                        "messages": {
+                            "messages": {
+                                "messages": {
+                                    "messages": {
+                                        "messages": {
+                                            "messages": {
+                                                "messages": {
+                                                    "messages": {
+                                                        "": {
+                                                            "project-id-version": "PACKAGE VERSION",
+                                                            "report-msgid-bugs-to": "",
+                                                            "pot-creation-date": "2015-03-24 09:21+0000",
+                                                            "po-revision-date": "YEAR-MO-DA HO:MI+ZONE",
+                                                            "language-team": "LANGUAGE <LL@li.org>",
+                                                            "language": "et",
+                                                            "mime-version": "1.0",
+                                                            "content-type": "text/plain; charset=UTF-8",
+                                                            "content-transfer-encoding": "8bit"
+                                                        },
+                                                        "Loo uus makselahendus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Sertifikaadi valikud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Võtme pikkus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "%s bitti": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Võtme pikkuse valik mõjub ainult Ipizza põhistele pankadele ning Kaardikeskusele, mis kasutavad allkirjastamiseks avaliku võtme süsteemi": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makse automaatselt %s, suunatakse tagasi kaupmehe juurde...": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "teostatud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "katkestatud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "tagasi lükatud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Muuda makselahenduse andmeid": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Allkirjastamise algoritm": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Võtme pikkuse vahetamine mõjutab ainult edaspidi genereeritavaid võtmeid, aga mitte hetkel kasutusel olevat": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Genereeri uus sertifikaat (vana sertifikaat kaotab kehtivuse)": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Kas oled ikka kindel, seda otsust ei ole võimalik hiljem enam tagasi võtta?": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Kustuta see makselahendus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makselahendus sisaldab endas makseks vajalikke kasutajatunnuseid ning sertifikaate. Makselahendused võimaldavad  grupeerida näiteks ühe kliendi või projektiga seotud makseid. Iga tehtud makse logitakse koos kogu sellega seotud infoga ning seda on võimalik hiljem vaadata.": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Üldised seaded": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Vali panga tüüp": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        " –– Vali pank –– ": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Panga tüüp: <strong>%s</strong>": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Nimetus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Minu makselahendus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Kirjeldus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Täpsemad seaded": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "MD5 (vaikimisi)": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "SHA1": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "SHA256": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Saada automaatvastus kaupmehe serverile (kasutades SOLOPMT_RETURN aadressi) peale makse sooritamist (kehtib ainult Nordea puhul)": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Pankade kaardikeskuse seaded": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "URL": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Peale makse sooritamist suunatakse maksja siin määratud aadressile (kui <code>ver=002</code>)": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Ipizza seaded": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Järgmised andmed on vajalikud teenuskoodi 1002 kasutamiseks ning need defineerivad makse saaja andmed.": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makse saaja": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Konto Omanik OÜ": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Kui saaja nimi on määramata, kasutatakse vaikimisi makselahenduse nimetust": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Saaja konto": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Kui konto number on määramata, genereeritakse vajadusel selleks suvaline number": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Andmebaasi viga": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Vigane makselahenduse identifikaator": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Sellise identifikaatoriga makselahendust ei leitud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makselahendus nimega \"%s\" on kustutatud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Maksekorraldus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Autentimine": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Vigane maksekorralduse identifikaator": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Sellise identifikaatoriga maksekorraldust ei leitud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Tundmatu rakendus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makselahenduse nimetuse täitmine on kohustuslik": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Panga tüüp on valimata": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Vigane võtme pikkus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Vigane algoritm": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Vigane tagasisuunamise aadress, peab olema korrektne URL": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Saaja konto peab olema IBAN formaadis": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Andmete valideerimisel ilmnesid vead": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Sertifikaadi genereerimisel tekkis viga": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makselahendus on loodud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makselahenduse loomine ebaõnnestus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makselahenduse andmed on uuendatud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Genereeriti uus sertifikaat": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Makselahenduse andmete uuendamine ebaõnnestus": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Sellist võtmefaili ei leitud": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Dokumentatsiooni viga": [
+                                                            null,
+                                                            ""
+                                                        ],
+                                                        "Vigane sisend": [
+                                                            null,
+                                                            ""
+                                                        ]
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

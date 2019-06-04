@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1>Maksete ajalugu</h1>
+    <h2>Maksete ajalugu</h2>
 </div>
 
 <table class="table table-hover">
@@ -38,7 +38,7 @@
         <% if(!payments || !payments.length){%>
             <tr>
                 <td colspan="9">
-                    Ühtegi makset pole nende tunnustega veel üritatud teha.
+                    Ühtegi makset pole nende tunnustega veel üritatud teha. Lae alla <a href="/<%= lang %>/project/<%= project._id %>/example/pay.php">PHP näiterakendus</a> makselahenduse andmetega ning soorita selle abil <a href="/<%= lang %>/project/<%= project._id %>/example/render/pay.php">esimene makse</a>.
                 </td>
             </tr>
         <% } %>
@@ -55,14 +55,14 @@
                         <%= payment.date %>
                     </td>
                     <td>
-                        <%= payment.message || "" %>
+                        <%= payment.message || (payment.state === "AUTHENTICATED" && ((payment.payment.authUserName || "") + " : " + (payment.payment.authUserId || ""))) || "" %>
                     </td>
                     <td>
                         <% if(payment.state && labels[payment.state]){ %>
                             <span class="label label-<%= labels[payment.state].type %>"><%= labels[payment.state].name %></span>
                         <%}%>
                         <% if(payment.state == "IN PROCESS"){%>
-                            (<a href="/preview/<%= payment._id %>">Jätka</a>)
+                            (<a href="/<%= lang %>/preview/<%= payment._id %>">Jätka</a>)
                         <%}%>
                     </td>
                     <td>
@@ -72,10 +72,10 @@
                         <%= payment.charset %>
                     </td>
                     <td>
-                        <%= payment.type == "PAYMENT" ? payment.amount : "" %>
+                        <%= payment.type == "PAYMENT" ? payment.amount : "–" %>
                     </td>
                     <td>
-                        <a href="/payment/<%= payment._id %>">Vaata andmeid</a>
+                        <a href="/<%= lang %>/payment/<%= payment._id %>">Vaata andmeid</a>
                     </td>
                 </tr>
 

@@ -1,0 +1,291 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-27 14:34+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: www/views/add-project.ejs:4 www/views/add-project.ejs:31
+msgid "Loo uus makselahendus"
+msgstr ""
+
+#: www/views/add-project.ejs:9 www/views/edit-project.ejs:9
+msgid "Sertifikaadi valikud"
+msgstr ""
+
+#: www/views/add-project.ejs:14
+msgid "Võtme pikkus"
+msgstr ""
+
+#: www/views/add-project.ejs:17 www/views/add-project.ejs:18
+#: www/views/add-project.ejs:19 www/views/edit-project.ejs:17
+#: www/views/edit-project.ejs:18 www/views/edit-project.ejs:19
+msgid "%s bitti"
+msgstr ""
+
+#: www/views/add-project.ejs:24
+msgid ""
+"Võtme pikkuse valik mõjub ainult Ipizza põhistele pankadele ning "
+"Kaardikeskusele, mis kasutavad allkirjastamiseks avaliku võtme süsteemi"
+msgstr ""
+
+#: www/views/banklink/autosubmit.ejs:15
+msgid "Makse automaatselt %s, suunatakse tagasi kaupmehe juurde..."
+msgstr ""
+
+#: www/views/banklink/autosubmit.ejs:15
+msgid "teostatud"
+msgstr ""
+
+#: www/views/banklink/autosubmit.ejs:15
+msgid "katkestatud"
+msgstr ""
+
+#: www/views/banklink/autosubmit.ejs:15
+msgid "tagasi lükatud"
+msgstr ""
+
+#: www/views/edit-project.ejs:4 www/views/edit-project.ejs:39
+msgid "Muuda makselahenduse andmeid"
+msgstr ""
+
+#: www/views/edit-project.ejs:14 www/views/project-form.ejs:93
+msgid "Allkirjastamise algoritm"
+msgstr ""
+
+#: www/views/edit-project.ejs:24
+msgid ""
+"Võtme pikkuse vahetamine mõjutab ainult edaspidi genereeritavaid võtmeid, "
+"aga mitte hetkel kasutusel olevat"
+msgstr ""
+
+#: www/views/edit-project.ejs:32
+msgid "Genereeri uus sertifikaat (vana sertifikaat kaotab kehtivuse)"
+msgstr ""
+
+#: www/views/edit-project.ejs:40
+msgid ""
+"Kas oled ikka kindel, seda otsust ei ole võimalik hiljem enam tagasi võtta?"
+msgstr ""
+
+#: www/views/edit-project.ejs:40
+msgid "Kustuta see makselahendus"
+msgstr ""
+
+#: www/views/project-form.ejs:1
+msgid ""
+"Makselahendus sisaldab endas makseks vajalikke kasutajatunnuseid ning "
+"sertifikaate. Makselahendused võimaldavad  grupeerida näiteks ühe kliendi "
+"või projektiga seotud makseid. Iga tehtud makse logitakse koos kogu sellega "
+"seotud infoga ning seda on võimalik hiljem vaadata."
+msgstr ""
+
+#: www/views/project-form.ejs:3
+msgid "Üldised seaded"
+msgstr ""
+
+#: www/views/project-form.ejs:12
+msgid "Vali panga tüüp"
+msgstr ""
+
+#: www/views/project-form.ejs:15
+msgid " –– Vali pank –– "
+msgstr ""
+
+#: www/views/project-form.ejs:64
+msgid "Panga tüüp: <strong>%s</strong>"
+msgstr ""
+
+#: www/views/project-form.ejs:68
+msgid "Nimetus"
+msgstr ""
+
+#: www/views/project-form.ejs:70
+msgid "Minu makselahendus"
+msgstr ""
+
+#: www/views/project-form.ejs:78
+msgid "Kirjeldus"
+msgstr ""
+
+#: www/views/project-form.ejs:89
+msgid "Täpsemad seaded"
+msgstr ""
+
+#: www/views/project-form.ejs:96
+msgid "MD5 (vaikimisi)"
+msgstr ""
+
+#: www/views/project-form.ejs:97
+msgid "SHA1"
+msgstr ""
+
+#: www/views/project-form.ejs:98
+msgid "SHA256"
+msgstr ""
+
+#: www/views/project-form.ejs:111
+msgid ""
+"Saada automaatvastus kaupmehe serverile (kasutades SOLOPMT_RETURN aadressi) "
+"peale makse sooritamist (kehtib ainult Nordea puhul)"
+msgstr ""
+
+#: www/views/project-form.ejs:119
+msgid "Pankade kaardikeskuse seaded"
+msgstr ""
+
+#: www/views/project-form.ejs:124
+msgid "URL"
+msgstr ""
+
+#: www/views/project-form.ejs:130
+msgid ""
+"Peale makse sooritamist suunatakse maksja siin määratud aadressile (kui "
+"<code>ver=002</code>)"
+msgstr ""
+
+#: www/views/project-form.ejs:138
+msgid "Ipizza seaded"
+msgstr ""
+
+#: www/views/project-form.ejs:142
+msgid ""
+"Järgmised andmed on vajalikud teenuskoodi 1002 kasutamiseks ning need "
+"defineerivad makse saaja andmed."
+msgstr ""
+
+#: www/views/project-form.ejs:145
+msgid "Makse saaja"
+msgstr ""
+
+#: www/views/project-form.ejs:147
+msgid "Konto Omanik OÜ"
+msgstr ""
+
+#: www/views/project-form.ejs:151
+msgid ""
+"Kui saaja nimi on määramata, kasutatakse vaikimisi makselahenduse nimetust"
+msgstr ""
+
+#: www/views/project-form.ejs:156
+msgid "Saaja konto"
+msgstr ""
+
+#: www/views/project-form.ejs:162
+msgid ""
+"Kui konto number on määramata, genereeritakse vajadusel selleks suvaline "
+"number"
+msgstr ""
+
+#: lib/routes.js:166 lib/routes.js:204 lib/routes.js:287 lib/routes.js:319
+#: lib/routes.js:369 lib/routes.js:383 lib/routes.js:752 lib/routes.js:782
+#: lib/routes.js:866 lib/routes.js:974 lib/routes.js:1043 lib/routes.js:1097
+#: lib/routes.js:1122 lib/routes.js:1333 lib/routes.js:1513 lib/routes.js:1524
+#: lib/routes.js:1548
+msgid "Andmebaasi viga"
+msgstr ""
+
+#: lib/routes.js:195 lib/routes.js:240 lib/routes.js:278 lib/routes.js:462
+#: lib/routes.js:852 lib/routes.js:1034 lib/routes.js:1088 lib/routes.js:1325
+#: lib/routes.js:1541
+msgid "Vigane makselahenduse identifikaator"
+msgstr ""
+
+#: lib/routes.js:209 lib/routes.js:254 lib/routes.js:292 lib/routes.js:388
+#: lib/routes.js:871 lib/routes.js:1048 lib/routes.js:1102 lib/routes.js:1337
+#: lib/routes.js:1552
+msgid "Sellise identifikaatoriga makselahendust ei leitud"
+msgstr ""
+
+#: lib/routes.js:265
+msgid "Makselahendus nimega \"%s\" on kustutatud"
+msgstr ""
+
+#: lib/routes.js:341 lib/routes.js:433
+msgid "Maksekorraldus"
+msgstr ""
+
+#: lib/routes.js:342 lib/routes.js:434
+msgid "Autentimine"
+msgstr ""
+
+#: lib/routes.js:360 lib/routes.js:1144
+msgid "Vigane maksekorralduse identifikaator"
+msgstr ""
+
+#: lib/routes.js:374
+msgid "Sellise identifikaatoriga maksekorraldust ei leitud"
+msgstr ""
+
+#: lib/routes.js:456
+msgid "Tundmatu rakendus"
+msgstr ""
+
+#: lib/routes.js:647 lib/routes.js:859 lib/routes.js:1450
+msgid "Makselahenduse nimetuse täitmine on kohustuslik"
+msgstr ""
+
+#: lib/routes.js:652 lib/routes.js:1455
+msgid "Panga tüüp on valimata"
+msgstr ""
+
+#: lib/routes.js:657 lib/routes.js:877 lib/routes.js:1460
+msgid "Vigane võtme pikkus"
+msgstr ""
+
+#: lib/routes.js:662 lib/routes.js:882 lib/routes.js:1465
+msgid "Vigane algoritm"
+msgstr ""
+
+#: lib/routes.js:667 lib/routes.js:887 lib/routes.js:1470
+msgid "Vigane tagasisuunamise aadress, peab olema korrektne URL"
+msgstr ""
+
+#: lib/routes.js:672 lib/routes.js:892
+msgid "Saaja konto peab olema IBAN formaadis"
+msgstr ""
+
+#: lib/routes.js:685 lib/routes.js:905 lib/routes.js:1483
+msgid "Andmete valideerimisel ilmnesid vead"
+msgstr ""
+
+#: lib/routes.js:710 lib/routes.js:930 lib/routes.js:1109 lib/routes.js:1490
+msgid "Sertifikaadi genereerimisel tekkis viga"
+msgstr ""
+
+#: lib/routes.js:804
+msgid "Makselahendus on loodud"
+msgstr ""
+
+#: lib/routes.js:807 lib/routes.js:1529
+msgid "Makselahenduse loomine ebaõnnestus"
+msgstr ""
+
+#: lib/routes.js:997
+msgid "Makselahenduse andmed on uuendatud"
+msgstr ""
+
+#: lib/routes.js:999 lib/routes.js:1128
+msgid "Genereeriti uus sertifikaat"
+msgstr ""
+
+#: lib/routes.js:1003 lib/routes.js:1131
+msgid "Makselahenduse andmete uuendamine ebaõnnestus"
+msgstr ""
+
+#: lib/routes.js:1070
+msgid "Sellist võtmefaili ei leitud"
+msgstr ""
+
+#: lib/routes.js:1176
+msgid "Dokumentatsiooni viga"
+msgstr ""
+
+#: lib/routes.js:1293
+msgid "Vigane sisend"
+msgstr ""

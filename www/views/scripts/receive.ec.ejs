@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="<%- payment.charset.toLowerCase() %>" />
-        <title>Example payment usage - <%= bank.name %> - pangalink.net</title>
+        <title>Example payment usage - <%= bank.name %> - <%= title %></title>
     </head>
     <body>
 <?php
@@ -66,11 +66,11 @@ if(!function_exists("mb_str_pad")){
         }
         return str_pad($input, $pad_length + $diff, $pad_string, $pad_type);
     }
-}<% } -%>
+}<% } -%>
 
 <%
-    signatureOrder = signatureOrder[payment.responseFields.service || "002"] || signatureOrder["002"];
-    signatureOrder = signatureOrder[payment.responseFields.action || "afb"] || signatureOrder["afb"];
+    signatureOrder = signatureOrder[payment.responseFields.service || "002"] || signatureOrder["002"];
+    signatureOrder = signatureOrder[payment.responseFields.action || "afb"] || signatureOrder["afb"];
 -%>
 <% signatureOrder.forEach(function(field, i, arr){%>
 <% data += (signatureLength[field] >= 0 ? new Array(Math.abs(signatureLength[field]) + 1 -  (field in payment.responseFields ? payment.responseFields[field] : "").length).join("0") : "") + (field in payment.responseFields ? payment.responseFields[field] : "") + (signatureLength[field] < 0 ? new Array(Math.abs(signatureLength[field]) + 1 - (field in payment.responseFields ? payment.responseFields[field] : "").length).join(" ") : "") -%>

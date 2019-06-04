@@ -18,7 +18,7 @@
 <%}%>
 
 <% if(payment.warnings && payment.warnings.length){%>
-    <div class="alert">
+    <div class="alert alert-warning">
       <strong>Tähelepanu!</strong> Maksekorralduse töötlemisel ilmnes tõrkeid.
     </div>
     <p>Järgnevad vead tasub parandada, kuid see ei ole kohustuslik:</p>
@@ -39,7 +39,7 @@
     <tr>
         <td>Makselahendus</td>
         <td>
-            <a href="/project/<%= project._id%>"><%= project.name %></a>
+            <a href="/<%= lang %>/project/<%= project._id%>"><%= project.name %></a>
         </td>
     </tr>
     <%}%>
@@ -79,7 +79,7 @@
                 <span class="label label-<%= labels[payment.state].type %>"><%= labels[payment.state].name %></span>
             <%}%>
             <% if(payment.state == "IN PROCESS"){%>
-                (<a href="/preview/<%= payment._id %>">Jätka</a>)
+                (<a href="/<%= lang %>/preview/<%= payment._id %>">Jätka</a>)
             <%}%>
         </td>
     </tr>
@@ -133,13 +133,11 @@
         <% payment.headers.forEach(function(header){%>
             <tr>
                 <td><%= header.key %></td>
-                <td><div style="max-width: 800px; overflow: auto; margin:0; padding:0;"><code style="background: #EFEFEF;"><%- (header.value || "").toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/ /g, "<span style=\"opacity:0.4; color: blue;\">·</span>").replace(/[\u0000-\u001F]/g, function(c){c = c.charCodeAt(0).toString(16).toUpperCase(); return "<span style=\"opacity:0.4; color: blue;\">[0x" +(c.length<2?"0"+c:c)+ "]</span>"}).replace(/ /g, "<span style=\"opacity:0.4; color: blue;\">◇</span>") %><span style="opacity:0.4; color: blue;">¶</span></code></div></td>
+                <td><div style="max-width: 800px; overflow: auto; margin:0; padding:0;"><code style="background: #EFEFEF;"><%= header.value %></code></div></td>
             </tr>
         <%})%>
     </tbody>
 </table>
-
-<p><strong>NB!</strong> Siin ja edaspidi on väärtustes tühikud asendatud vahepunktiga <code><span style="opacity:0.4; color: blue;">·</span></code> ning väärtuse lõppu on lisatud rea lõpu sümbol <code><span style="opacity:0.4; color: blue;">¶</span></code> - nii on kergem tuvastada kas on kogemata kasutusel mitu tühikut vmt.</p>
 
 <% if(payment.body){%>
     <h4>Päringu sisu</h4>
@@ -158,7 +156,7 @@
             <% payment.fields.forEach(function(field){%>
                 <tr>
                     <td><%= field.key %></td>
-                    <td><div style="max-width: 800px; overflow: auto; margin:0; padding:0;"><code style="background: #EFEFEF;"><%- (field.value || "").toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/ /g, "<span style=\"opacity:0.4; color: blue;\">·</span>").replace(/[\u0000-\u001F]/g, function(c){c = c.charCodeAt(0).toString(16).toUpperCase(); return "<span style=\"opacity:0.4; color: blue;\">[0x" +(c.length<2?"0"+c:c)+ "]</span>"}).replace(/ /g, "<span style=\"opacity:0.4; color: blue;\">◇</span>") %><span style="opacity:0.4; color: blue;">¶</span></code></div>
+                    <td><div style="max-width: 800px; overflow: auto; margin:0; padding:0;"><code style="background: #EFEFEF;"><%= (field.value || "") %></code></div>
 
                         <% if(payment.errors){%>
                             <% payment.errors.forEach(function(error, i){%>
@@ -186,12 +184,12 @@
 <% if(payment.hash){%>
 <h4>Allkirja kontrolli sisend</h4>
 
-<p>Allkirja kontrollimiseks <a href="/project/<%= project._id %>/user_cert.pem">kasutaja sertifikaadiga</a> kasutati järgmist stringi:</p>
+<p>Allkirja kontrollimiseks <a href="/<%= lang %>/project/<%= project._id %>/user_cert.pem">kasutaja sertifikaadiga</a> kasutati järgmist stringi:</p>
 <pre><%= payment.hash %></pre>
 
 <p>
-<a href="/payment/<%= payment._id %>/scripts/send.php" target="_blank"class="btn btn-default btn-lg"><span class="glyphicon glyphicon-download"></span> send.php</a>
-<small>Lae alla näiteskript, mis allkirjastab need andmed ja koostab päringuvormi</small>
+<a href="/<%= lang %>/payment/<%= payment._id %>/scripts/pay.php" class="btn btn-warning"><span class="glyphicon glyphicon-download"></span> pay.php</a>
+<small>Lae alla näiteskript sisendandmete korrektseks allkirjastamiseks</small>
 <%}%>
 </p>
 
@@ -215,7 +213,7 @@
             <% Object.keys(payment.responseFields).forEach(function(key){%>
                 <tr>
                     <td><%= key %></td>
-                    <td><div style="max-width: 800px; overflow: auto; margin:0; padding:0;"><code style="background: #EFEFEF;"><%- (payment.responseFields[key] || "").toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/ /g, "<span style=\"opacity:0.4; color: blue;\">·</span>").replace(/[\u0000-\u001F]/g, function(c){c = c.charCodeAt(0).toString(16).toUpperCase(); return "<span style=\"opacity:0.4; color: blue;\">[0x" +(c.length<2?"0"+c:c)+ "]</span>"}).replace(/ /g, "<span style=\"opacity:0.4; color: blue;\">◇</span>") %><span style="opacity:0.4; color: blue;">¶</span></code></div>
+                    <td><div style="max-width: 800px; overflow: auto; margin:0; padding:0;"><code style="background: #EFEFEF;"><%= (payment.responseFields[key] || "") %></code></div>
                     </td>
                 </tr>
             <%})%>
@@ -226,15 +224,15 @@
 <% if(payment.responseHash){%>
 <h4>Allkirjastamise sisend</h4>
 
-<p>Vastuse allkirjastamiseks <a href="/project/<%= project._id %>/bank_key.pem">panga võtmega</a> kasutati järgmist stringi:</p>
+<p>Vastuse allkirjastamiseks <a href="/<%= lang %>/project/<%= project._id %>/bank_key.pem">panga võtmega</a> kasutati järgmist stringi:</p>
 <pre><%= payment.responseHash %></pre>
 
-<a href="/payment/<%= payment._id %>/scripts/receive.php" target="_blank"class="btn btn-default btn-lg"><span class="glyphicon glyphicon-download"></span> receive.php</a>
-<small>Lae alla näiteskript, mis kontrollib nende andmetega allkirja</small>
+<p><a href="/<%= lang %>/payment/<%= payment._id %>/scripts/receive.php" class="btn btn-warning"><span class="glyphicon glyphicon-download"></span> receive.php</a>
+<small>Lae alla näiteskript tehingu andmete allkirja kontrolliks</small></p>
 <%}%>
 
 <% if(payment.autoResponse){%>
-    <h3>Automaatpäringu vastus</h3>
+    <h3 id="automaatparingu_vastus">Automaatpäringu vastus</h3>
 
     <% if(!payment.autoResponse.statusCode){%>
 
@@ -246,19 +244,19 @@
 
     <blockquote>Alternatiiv <em>localhost</em> sisu lubamiseks avalikku veebi oleks kasutada <a href="http://progrium.com/localtunnel/">localtunnel</a> teenust või mõnd selle analoogi, kuid seda tuleb tuleb teha ülima ettevaatlikkusega - oma arvuti avamine tervele internetile ei pruugi olla väga tervislik.</blockquote>
 
-    <% } %>
+    <% } %>
 
     <% if(payment.autoResponse.statusCode){%>
 
     <h4>Staatus <%= payment.autoResponse.statusCode %></h4>
 
         <% if(payment.autoResponse.statusCode >= 300 ){%>
-            <div class="alert">
+            <div class="alert alert-info">
               <strong>Tähelepanu!</strong> Kuna päringu HTTP staatus oli <strong><%= payment.autoResponse.statusCode %></strong>, mitte <strong>200</Strong>, peab pank seda vigaseks vastuseks ning üritab mõne aja pärast samu andmeid uuesti saata (täpne käitumine sõltub konkreetsest pangast)
             </div>
-        <% } %>
+        <% } %>
 
-    <% } %>
+    <% } %>
 
     <% if(payment.autoResponse.headers){%>
 
@@ -275,12 +273,12 @@
             <% Object.keys(payment.autoResponse.headers).forEach(function(key){%>
                 <tr>
                     <td><%= key %></td>
-                    <td><div style="max-width: 800px; overflow: auto; margin:0; padding:0;"><code style="background: #EFEFEF;"><%- (payment.autoResponse.headers[key] || "").toString().replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/ /g, "<span style=\"opacity:0.4; color: blue;\">·</span>").replace(/[\u0000-\u001F]/g, function(c){c = c.charCodeAt(0).toString(16).toUpperCase(); return "<span style=\"opacity:0.4; color: blue;\">[0x" +(c.length<2?"0"+c:c)+ "]</span>"}).replace(/ /g, "<span style=\"opacity:0.4; color: blue;\">◇</span>") %><span style="opacity:0.4; color: blue;">¶</span></code></div></td>
+                    <td><div style="max-width: 800px; overflow: auto; margin:0; padding:0;"><code style="background: #EFEFEF;"><%= (payment.autoResponse.headers[key] || "") %></code></div></td>
                 </tr>
             <%})%>
         </tbody>
     </table>
-    <% } %>
+    <% } %>
 
     <% if(payment.autoResponse.body){%>
 
@@ -289,10 +287,10 @@
     <% if(payment.autoResponse.body.length > 20 * 1048){ %>
         <p><strong>Lühendatud sisu!</strong> Kuna vastus oli liiga pikk, kuvatakse siin vaid vastuse esimesed 20 kilobaiti.</p>
     <% } %>
-    <% } %>
+    <% } %>
 
     <% if(payment.autoResponse.headers && !payment.autoResponse.body){%>
         <p>Päringu vastus oli tühi</p>
-    <% } %>
+    <% } %>
 
 <% } %>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="et">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="../www/static/favicon.ico">
+    <title>Pangalink-net – pangalinkide testkeskkond</title>
+    <link href="./static/css/cosmo.css" rel="stylesheet">
+
+
+    <style type="text/css">
+        body{
+            -webkit-user-select: none;
+            -webkit-app-region: drag;
+        }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3><span class="glyphicon glyphicon-link" aria-hidden="true"></span> Pangalinkide testkeskkond</h3>
+
+                <div role="tabpanel">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Server</a></li>
+                        <li role="presentation"><a href="#logi" aria-controls="logi" role="tab" data-toggle="tab">Logi</a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Seaded</a></li>
+                        <li role="presentation"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">Rakendusest</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home" style="padding: 10px 0;">
+
+                            <p>Rakendus käivitab arvutis lokaalse pangalinkide testkeskkonna serveri, mis jookseb valitud pordil. Käivitatav server on rakendustele ligipääsetav sarnaselt iga teise veebiserveriga.</p>
+
+                            <div id="running" style="display: none">
+                                <div class="alert alert-success clearfix" role="alert">
+                                    Server töötab
+
+                                    <div class="pull-right">
+                                        <button id="open-web" class="btn btn-primary" autocomplete="off">
+                                            <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> http://<span id="hostname-val"></span>/
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="start">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">Server ei tööta</div>
+                                    <div class="panel-body">
+
+                                        <form id="start-server" class="form-inline">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="port">Pordi number</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">http://</div>
+                                                    <input type="text" class="form-control" id="hostname" placeholder="localhost">
+                                                    <div class="input-group-addon">:</div>
+
+                                                    <input type="number" class="form-control" id="port" placeholder="8080">
+                                                    <div class="input-group-addon">/</div>
+                                                </div>
+                                            </div>
+
+                                            <button type="submit" id="start-btn" data-loading-text="Käivitan..." class="btn btn-primary" autocomplete="off">
+                                                <span class="glyphicon glyphicon glyphicon-off" aria-hidden="true"></span> Käivita server
+                                            </button>
+                                        </form>
+
+                                        <div style="padding: 10px">
+                                            <dl>
+                                              <dt>hostname</dt>
+                                              <dd>vaikimisi <em>localhost</em>. Ei mõjuta serveri tööd, kuvatakse linkides testserveri domeeninimena</dd>
+                                              <dt>port</dt>
+                                              <dd>vaikimisi <em>8080</em>. Port, millel server hakkab kuulama. Tavaveebis on selleks <em>80</em></dd>
+                                            </dl>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="logi" style="padding: 10px 0;">
+                            <div class="form-group">
+                                <label for="logger">Serveri logi</label>
+                                <textarea class="form-control" id="logger" rows="11" style="resize: none; white-space:nowrap;" readonly></textarea>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="about" style="padding: 10px 0;">
+                            <h4>Kontakt</h4>
+                            <p>Andris Reinman<br/><a href="mailto:info@pangalink.net">info@pangalink.net</a></p>
+                            <h4>Litsents</h4>
+                            <p>
+                                <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/" style="display: block" class="pull-right"><img alt="Creative Commonsi litsents" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png"/></a>Autori <a xmlns:cc="http://creativecommons.org/ns#" href="https://pangalink.net/" property="cc:attributionName" rel="cc:attributionURL">Kreata OÜ</a> teos pealkirjaga <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Pangalink-net</span> on kaitstud litsentsiga<br/><a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commonsi Attribution-NoDerivatives 4.0 Rahvusvaheline litsents</a>.
+                            </p>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="settings" style="padding: 10px 0;">
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox" id="server-autostart">
+                                Käivita server rakenduse käivitamisel automaatselt
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./static/js/jquery.js"></script>
+    <script src="./static/js/bootstrap.min.js"></script>
+    <script src="./static/js/app.js"></script>
+
+  </body>
+</html>

@@ -1,20 +1,23 @@
-## UI automaattestid
+<div class="page-header">
+  <h1>UI automaattestid</h1>
+</div>
 
-Pangalink.net on automaattestisõbralik, kõik olulisemad väärtused on kirjeldatud `data-*` atribuutidega. UI automaatteste on võimalik läbi viia näiteks [Seleniumi](http://docs.seleniumhq.org/) abil.
+Teenus on automaattestisõbralik, kõik olulisemad väärtused on kirjeldatud `data-*` atribuutidega. UI automaatteste on võimalik läbi viia näiteks [Seleniumi](http://docs.seleniumhq.org/) abil.
 
 ### Makse staatus
 
 Makse staatuse leiab järgmisest väljast:
 
-    document.querySelector("[data-payment-state]").dataset.paymentState
+    document.querySelector("[data-current-state]").dataset.paymentState
 
 Võimalikud väärtused:
 
-  * **PREVIEW** – ees on maksekorralduse eelvaade
-  * **PAYED** – maksekorraldus on aktsepteeritud ("tagasi kaupmehe juurde" leht)
-  * **REJECTED** – maksekorraldus on tehnilistel põhjustel tagasi lükatud ("tagasi kaupmehe juurde" leht)
-  * **CANCELLED** – maksekorraldus on kasutaja poolt katkestatud ("tagasi kaupmehe juurde" leht)
-  * **ERRORED** – makse andmeid ei aktsepteeritud, vt. ka `data-payment-error` välja
+  * **preview** – ees on maksekorralduse või autentimise eelvaade
+  * **payed** – maksekorraldus on aktsepteeritud ("tagasi kaupmehe juurde" leht)
+  * **rejected** – maksekorraldus on tehnilistel põhjustel tagasi lükatud ("tagasi kaupmehe juurde" leht)
+  * **cancelled** – maksekorraldus on kasutaja poolt katkestatud ("tagasi kaupmehe juurde" leht)
+  * **authenticated** – kasutaja on autenditud ("tagasi kaupmehe juurde" leht)
+  * **error** – makse andmeid ei aktsepteeritud, vt. ka `data-payment-error` välja
 
 Juhul kui makse andmeid ei aktsepteeritud, leiab veateate kirjelduse teksti kujul järgmisest väljast:
 
@@ -22,7 +25,7 @@ Juhul kui makse andmeid ei aktsepteeritud, leiab veateate kirjelduse teksti kuju
 
 Näiteks juhul kui makse on õnnestunud, peaks "tagasi kaupmehe juurde" lehel leiduma järgmine element:
 
-    document.querySelector("[data-payment-state=PAYED]")
+    document.querySelector("[data-current-state=payed]")
 
 ### Makse nupud
 
@@ -32,6 +35,7 @@ Kõik nupud on märgistatud atribudiga `data-button`, mille väärtused on järg
   * **cancel** – makse katkestamise nupp (makse eelvaate lehel)
   * **reject** – makse tagasilükkamise nupp (makse eelvaate lehel)
   * **return** – makse tagasilükkamise nupp ("tagasi kaupmehe juurde" leht)
+  * **auth** – kasutaja autentimise nupp (autentimisvormi lehel)
 
 NB! Kuna HTML elemendid võivad olla erinevad (nii &lt;A&gt; kui ka &lt;button&gt;), siis selektoris ei tohiks elemendi tüüpi määrata ja kasutada vaid `data-button` atribuuti. Näiteks makse aktsepteerimiseks võib teha nii:
 
@@ -43,6 +47,12 @@ Osadel juhtudel on võimalik muuta makse sooritaja nime ja kontonumbrit, need v�
 
   * **sender-name** maksja nimi (makse eelvaate lehel)
   * **sender-account** maksja konto number (makse eelvaate lehel)
+  * **auth-user** kasutaja kokkuleppeline identifikaator (autentmisvormi lehel)
+  * **auth-user-name** kasutaja nimi (autentmisvormi lehel)
+  * **auth-user-id** kasutaja isikukood (autentmisvormi lehel)
+  * **auth-country** isikukoodi riik (autentmisvormi lehel)
+  * **auth-other** muu info kasutaja kohta (autentmisvormi lehel)
+  * **auth-token** autentimisvahend (autentmisvormi lehel)
 
 Näide:
 

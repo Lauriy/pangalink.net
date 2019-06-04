@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- This webpage uses bootstrap template -->
-<html lang="et">
+<html lang="<%= lang %>" dir="<%= lang_dir %>">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,44 +7,92 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Andris Reinman">
 
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
         <!-- Le styles -->
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/bootstrap/css/bootstrap-glyphicons.css" rel="stylesheet">
-        <link href="/style/docs.css" rel="stylesheet">
-        <link href="/style/custom.css" rel="stylesheet">
-        <style>
+        <link href="/style/generated/theme.css" rel="stylesheet">
+
+        <style type="text/css">
+
+            /* Sticky footer styles
+            -------------------------------------------------- */
+
+            html,
             body {
-                padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+              height: 100%;
+              /* The html and body elements cannot have any padding or margin. */
+              padding-top: 0;
+            }
+
+            /* Wrapper for page content to push down footer */
+            #wrap {
+              min-height: 100%;
+              height: auto !important;
+              height: 100%;
+              /* Negative indent footer by it's height */
+              margin: 0 auto -60px;
+            }
+
+            /* Set the fixed height of the footer here */
+            #push,
+            #footer {
+              height: 60px;
+              color: #fff;
+            }
+            #footer a{
+              color: #fff;
+            }
+
+            /* Lastly, apply responsive CSS fixes as necessary */
+            @media (max-width: 767px) {
+              #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+              }
+            }
+
+            /* Custom page CSS
+            -------------------------------------------------- */
+            /* Not required for template or sticky footer method. */
+
+            #wrap > .container {
+              /* padding-top: 60px; */
+            }
+            .container .credit {
+              margin: 20px 0;
+            }
+
+            code {
+              font-size: 80%;
             }
         </style>
     </head>
-
     <body>
-
-        <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
+      <div id="wrap">
+        <div class="navbar navbar-inverse navbar-default">
           <div class="container">
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a href="/" class="navbar-brand"><%= title %></a>
-            <div class="nav-collapse collapse bs-navbar-collapse">
+            <div class="navbar-header">
+              <a href="/<%= lang %>/" class="navbar-brand"><span class="glyphicon glyphicon-link"></span> <%= title %></a>
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navbar-main">
               <ul class="nav navbar-nav">
                 <% include mainmenu %>
               </ul>
             </div>
           </div>
         </div>
-<!--
-        <div class="bs-header">
-          <div class="container">
-            <h1><%= title %></h1>
-            <p>Pangalinkide universaalne testkeskkond</p>
-          </div>
-        </div>
--->
-        <div class="container bs-docs-container">
+
+        <div class="container">
             <div class="row">
                 <div class="col-lg-12">
 
@@ -74,61 +121,41 @@
                         </div>
                     <%});%>
 
-                    <div class="bs-docs-section">
-                        <div class="pull-left" style="margin-top: -33px; margin-right: 15px;">
-                            <img src="/pangalink.jpg" />
-                        </div>
-                        <% include router %>
-                    </div>
+                    <% include router %>
 
                 </div>
             </div>
-
-            <% if(!user || !user.account || user.account.type == "free"){%>
-            <div style="width: 728px; margin:10px auto 0 auto">
-                <script type="text/javascript"><!--
-                google_ad_client = "pub-7677294784429110";
-                /* 728x90, created 11/8/10 */
-                google_ad_slot = "3636140900";
-                google_ad_width = 728;
-                google_ad_height = 90;
-                //-->
-                </script>
-                <script type="text/javascript" src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>
-            </div>
-        <% } %>
-            
         </div> <!-- /container -->
 
         <!-- Footer
         ================================================== -->
-        <footer class="footer">
-            <div class="container" style="text-align: left">
-                <p>&copy; 2011–<%= new Date().getFullYear() %> <a href="http://www.kreata.ee/">Kreata OÜ</a> <a href="mailto:info@pangalink.net">info@pangalink.net</a></p>
-            </div>
-        </footer>
+        <div id="push"></div>
+      </div>
 
-        <!-- Le javascript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="/js/jquery-1.9.1.min.js"></script>
-        <script src="/bootstrap/js/bootstrap.min.js"></script>
+      <div id="footer" class="navbar-inverse">
+        <div class="container">
+          <p class="muted credit"><% include footer-text %></p>
+        </div>
+      </div>
 
-        <% if(googleAnalyticsID){%>
-        <script type="text/javascript">
+      <!-- Le javascript
+      ================================================== -->
+      <!-- Placed at the end of the document so the pages load faster -->
+      <script src="/js/jquery-1.9.1.min.js"></script>
+      <script src="/bootstrap/js/bootstrap.min.js"></script>
 
-              var _gaq = _gaq || [];
-              _gaq.push(['_setAccount', '<%= googleAnalyticsID %>']);
-              _gaq.push(['_trackPageview']);
+      <% if(googleAnalyticsID){%>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-              (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-              })();
+        ga('create', '<%= googleAnalyticsID %>', 'auto');
+        ga('send', 'pageview');
 
-        </script>
-        <%}%>
+      </script>
+      <%}%>
 
     </body>
 </html>
