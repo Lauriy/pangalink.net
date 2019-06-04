@@ -9,6 +9,9 @@ services:
     container_name: 'pangalink'
     build: .
     ports:
-      - '3480:3480'
+      - '8001:3480'
     environment:
       - NODE_ENV=production
+    volumes:
+      - ./data:/home/pangalink/data
+      - ./config:/home/pangalink/config
