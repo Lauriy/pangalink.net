@@ -6,6 +6,7 @@ var express = require('express');
 var app = express();
 var flash = require('connect-flash');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var routes = require('./lib/routes');
 var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
@@ -68,6 +69,11 @@ app.use(require('./lib/bodyparser'));
 app.use(tools.checkEncoding);
 
 app.use(session({
+    store: new RedisStore({
+        host: config.redis.host,
+        db: config.redis.db,
+        ttl: config.session.ttl
+    }),
     secret: config.session.secret,
     saveUninitialized: false,
     resave: false
